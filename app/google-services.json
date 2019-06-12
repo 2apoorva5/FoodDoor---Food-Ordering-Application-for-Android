@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "226270276245",
+    "firebase_url": "https://fooddoor-42765.firebaseio.com",
+    "project_id": "fooddoor-42765",
+    "storage_bucket": "fooddoor-42765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226270276245:android:86576f7c3f5b3515",
+        "android_client_info": {
+          "package_name": "com.hospitality.fooddoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226270276245-8mgafgd9tuci8n9brg4r7q080r5po854.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hospitality.fooddoor",
+            "certificate_hash": "7b79f57e20c2434acdc2e9bd7243038e09c4a5b4"
+          }
+        },
+        {
+          "client_id": "226270276245-0v6e108prtqecdm7krn4tmqf6j9u0ghp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2lS6oux2gglJvak2c-VbTcKldn13nkIU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226270276245-0v6e108prtqecdm7krn4tmqf6j9u0ghp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

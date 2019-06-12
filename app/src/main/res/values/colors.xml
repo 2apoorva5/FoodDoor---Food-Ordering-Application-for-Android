@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d32f2f</color>
+    <color name="colorPrimaryDark">#b71c1c</color>
+    <color name="colorAccent">#b71c1c</color>
+    <color name="colorPrimaryForLogin">#212121</color>
+    <color name="colorPrimaryDarkForLogin">#000000</color>
+    <color name="colorAccentForLogin">#00796B</color>
+    <color name="colorControlNormalForLogin">#00796B</color>
+    <color name="TextDrawable">#00796b</color>
+    <color name="colorControlActivatedForLogin">#b71c1c</color>
+    <color name="colorControlHighlightForLogin">#80CBC4</color>
+    <color name="colorErrorForLogin">#b71c1c</color>
+    <color name="editTextColorForLogin">#212121</color>
+    <color name="textColorForLogin">#263238</color>
+    <color name="textColorForButtonLogin">#E0F2F1</color>
+    <color name="colorControlActivatedForEdiTextLogin">#004D40</color>
+    <color name="windowBackgroundForLogin">#FAFAFA</color>
+    <color name="alerter1textAppearance">#ffffff</color>
+    <color name="ToolbarTitle">#ffffff</color>
+    <color name="Alerter1">#b71c1c</color>
+    <color name="alerter1progress">#ffebee</color>
+    <color name="ProceedAddress">#CFD8DC</color>
+    <color name="AddressHint">#b71c1c</color>
+    <color name="activeDots">#212121</color>
+    <color name="passiveDots">#757575</color>
+    <color name="navigationItem">#000000</color>
+
+    <color name="colorAccentForAddress">#b71c1c</color>
+    <color name="colorControlNormalForAddress">#b71c1c</color>
+    <color name="colorControlActivatedForAddress">#b71c1c</color>
+    <color name="colorErrorForAddress">#b71c1c</color>
+    <color name="textColorForAddress">#000000</color>
+
+    <color name="rate">#388E3C</color>
+    <color name="RatingHint">#757575</color>
+    <color name="RatingCommentBG">#E0E0E0</color>
+
+    <color name="statusBar">#ffffff</color>
+</resources>

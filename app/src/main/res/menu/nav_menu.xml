@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/ic_home_black_24dp" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:title="User Profile"
+            android:icon="@drawable/account" />
+
+        <item
+            android:id="@+id/nav_menu"
+            android:title="Menu"
+            android:icon="@drawable/ic_restaurant_black_24dp" />
+
+        <item
+            android:id="@+id/nav_cart"
+            android:title="Cart"
+            android:icon="@drawable/ic_shopping_cart_black_24dp" />
+
+        <item
+            android:id="@+id/nav_orders"
+            android:title="Order History"
+            android:icon="@drawable/ic_history_black_24dp" />
+
+        <item
+            android:id="@+id/nav_track"
+            android:title="Track Order"
+            android:icon="@drawable/ic_location_on_black_24dp" />
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:title="Notifications"
+            android:icon="@drawable/ic_add_alert_black_24dp" />
+
+        <item
+            android:id="@+id/nav_pay"
+            android:title="Payment Options"
+            android:icon="@drawable/ic_payment_black_24dp" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Sign Out"
+            android:icon="@drawable/ic_exit_to_app_black_24dp" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/nav_writeUs"
+                    android:icon="@drawable/ic_message_black_24dp"
+                    android:title="Feedback" />
+
+                <item
+                    android:id="@+id/nav_contact"
+                    android:icon="@drawable/ic_phone_black_24dp"
+                    android:title="Contact Us" />
+
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_share_black_24dp"
+                    android:title="Share" />
+
+                <item
+                    android:id="@+id/nav_rate"
+                    android:icon="@drawable/ic_star_border_black_24dp"
+                    android:title="Rate Us" />
+
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/ic_library_books_black_24dp"
+                    android:title="About Us" />
+
+            </group>
+        </menu>
+    </item>
+</menu>

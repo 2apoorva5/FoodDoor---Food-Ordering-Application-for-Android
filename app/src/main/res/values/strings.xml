@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Food@Door</string>
+    <string name="my_preference">my_preference</string>
+    <string name="my_preference_key">my_preference_key</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation drawer</string>
+    <string name="facebook_application_id">335602777223404</string>
+    <string name="facebook_login_protocol_scheme">fb335602777223404</string>
+    <string name="web_client_id">226270276245-0v6e108prtqecdm7krn4tmqf6j9u0ghp.apps.googleusercontent.com</string>
+
+    <string name="ForHomeTitle">Food@Door</string>
+    <string name="ForMenuTitle">Categories</string>
+    <string name="ForFoodListTitle">Items</string>
+    <string name="ForFoodDetailsTitle">Details</string>
+    <string name="ForCartTitle">My Cart</string>
+    <string name="ForAddressTitle">My Address</string>
+    <string name="ForOrdersTitle">My Orders</string>
+
+    <string-array name="states">
+        <item>Select State*</item>
+        <item>Punjab</item>
+        <item>Jharkhand</item>
+        <item>Chhattisgarh</item>
+    </string-array>
+
+    <string-array name="punjab">
+        <item>Punjab</item>
+    </string-array>
+
+    <string-array name="jharkhand">
+        <item>Jharkhand</item>
+    </string-array>
+
+    <string-array name="chhattisgarh">
+        <item>Chhattisgarh</item>
+    </string-array>
+
+    <string-array name="punjab_cities">
+        <item>Select City*</item>
+        <item>Mohali</item>
+        <item>Jalandhar</item>
+        <item>Ludhiana</item>
+    </string-array>
+
+    <string-array name="jharkhand_cities">
+        <item>Select City*</item>
+        <item>Dhanbad</item>
+        <item>Ranchi</item>
+        <item>Jamshedpur</item>
+    </string-array>
+
+    <string-array name="chhattisgarh_cities">
+        <item>Select City*</item>
+        <item>Raipur</item>
+        <item>Bhilai</item>
+        <item>Bilaspur</item>
+    </string-array>
+
+    <string-array name="cities">
+        <item>Select City*</item>
+        <item>Mohali</item>
+        <item>Jalandhar</item>
+        <item>Ludhiana</item>
+        <item>Dhanbad</item>
+        <item>Ranchi</item>
+        <item>Jamshedpur</item>
+        <item>Raipur</item>
+        <item>Bhilai</item>
+        <item>Bilaspur</item>
+    </string-array>
+
+</resources>

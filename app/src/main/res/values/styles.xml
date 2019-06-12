@@ -1,0 +1,163 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowContentTransitions">true</item>
+
+    </style>
+
+
+
+
+    <style name="toolBarTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/ToolbarTitle</item>
+        <item name="android:fontFamily">@font/chelsea_market</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+
+
+    <style name="toolBarSubTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/ToolbarTitle</item>
+        <item name="android:fontFamily">@font/basic</item>
+    </style>
+
+
+
+
+    <style name="EditTextHint" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/coda</item>
+        <item name="android:textColorHint">@color/AddressHint</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+
+
+
+    <style name="ForLogin" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryForLogin</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkForLogin</item>
+        <item name="colorAccent">@color/colorAccentForLogin</item>
+        <item name="colorControlNormal">@color/colorControlNormalForLogin</item>
+        <item name="colorControlActivated">@color/colorControlActivatedForLogin</item>
+        <item name="colorControlHighlight">@color/colorControlHighlightForLogin</item>
+        <item name="colorError">@color/colorErrorForLogin</item>
+        <item name="android:textColor">@color/textColorForLogin</item>
+        <item name="android:buttonStyle">@style/TextForButtonLogin</item>
+        <item name="android:editTextStyle">@style/EditTextForLogin</item>
+        <item name="android:windowBackground">@color/windowBackgroundForLogin</item>
+    </style>
+
+
+
+
+    <style name="TextInputAddress" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorAccent">@color/colorAccentForAddress</item>
+        <item name="android:colorControlNormal">@color/colorControlNormalForAddress</item>
+        <item name="android:colorControlActivated">@color/colorControlActivatedForAddress</item>]
+        <item name="colorError">@color/colorErrorForAddress</item>
+        <item name="android:textColor">@color/textColorForAddress</item>
+        <item name="android:editTextStyle">@style/EditTextForAddress</item>
+        <item name="hintTextAppearance">@style/EditTextHint</item>
+    </style>
+
+
+
+
+    <style name="TextForButtonLogin" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/textColorForButtonLogin</item>
+    </style>
+
+
+
+
+    <style name="RadioButtonAddress" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorAccent">@color/colorAccentForAddress</item>
+        <item name="colorControlNormal">@color/colorControlNormalForAddress</item>
+        <item name="colorControlActivated">@color/colorControlActivatedForAddress</item>]
+    </style>
+
+
+
+
+    <style name="EditTextForLogin" parent="FirebaseUI.TextInputEditText">
+        <item name="android:editTextColor">@color/editTextColorForLogin</item>
+        <item name="android:colorControlNormal">@color/colorControlNormalForLogin</item>
+        <item name="android:colorControlActivated">@color/colorControlNormalForLogin</item>
+        <item name="android:textColor">@color/editTextColorForLogin</item>
+    </style>
+
+
+
+
+    <style name="EditTextForAddress" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:editTextColor">@color/textColorForAddress</item>
+        <item name="android:colorControlNormal">@color/colorControlNormalForAddress</item>
+        <item name="android:colorControlActivated">@color/colorControlNormalForAddress</item>
+        <item name="android:textColor">@color/textColorForAddress</item>
+    </style>
+
+
+
+
+    <style name="Alerter1TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/alerter1textAppearance</item>
+        <item name="android:fontFamily">@font/sniglet</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+
+    <style name="NavigationItemsTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/navigationItem</item>
+        <item name="android:fontFamily">@font/capriola</item>
+    </style>
+
+
+
+
+    <style name="RatingDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@android:color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/RatingDialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/RatingDialogButtonStyle</item>
+    </style>
+
+
+
+
+    <style name="RatingDialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/rate</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+
+    
+    <style name="RatingDialogFadeAnim">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+
+
+    <style name="RateFoodFAB" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:background">#388E3C</item>
+    </style>
+
+</resources>

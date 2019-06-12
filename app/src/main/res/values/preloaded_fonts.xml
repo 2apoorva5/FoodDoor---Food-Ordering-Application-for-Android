@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/abril_fatface</item>
+        <item>@font/alef</item>
+        <item>@font/allerta</item>
+        <item>@font/antic</item>
+        <item>@font/armata</item>
+        <item>@font/autour_one</item>
+        <item>@font/baloo</item>
+        <item>@font/basic</item>
+        <item>@font/baumans</item>
+        <item>@font/belgrano</item>
+        <item>@font/biorhyme_extralight</item>
+        <item>@font/bree_serif</item>
+        <item>@font/cantora_one</item>
+        <item>@font/capriola</item>
+        <item>@font/chelsea_market</item>
+        <item>@font/coda</item>
+        <item>@font/cousine</item>
+        <item>@font/delius_unicase</item>
+        <item>@font/didact_gothic</item>
+        <item>@font/finger_paint</item>
+        <item>@font/galindo</item>
+        <item>@font/hammersmith_one</item>
+        <item>@font/margarine</item>
+        <item>@font/merriweather_light</item>
+        <item>@font/mirza</item>
+        <item>@font/prompt_thin</item>
+        <item>@font/prosto_one</item>
+        <item>@font/racing_sans_one</item>
+        <item>@font/signika_light</item>
+        <item>@font/signika_negative_light</item>
+        <item>@font/sniglet</item>
+        <item>@font/squada_one</item>
+        <item>@font/suez_one</item>
+        <item>@font/tenor_sans</item>
+        <item>@font/ubuntu_light</item>
+        <item>@font/wellfleet</item>
+        <item>@font/yanone_kaffeesatz_extralight</item>
+    </array>
+</resources>
