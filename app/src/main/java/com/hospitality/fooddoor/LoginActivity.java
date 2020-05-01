@@ -4,8 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -21,8 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hospitality.fooddoor.common.Common;
-import com.tapadoo.alerter.Alerter;
-import com.tapadoo.alerter.OnShowAlertListener;
 
 import java.util.Arrays;
 
@@ -56,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
+//        printkeyhash();
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         users = FirebaseDatabase.getInstance().getReference("Users");
@@ -80,6 +81,22 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
     }
+//
+//    private void printkeyhash() {
+//        try{
+//            PackageInfo info = getPackageManager().getPackageInfo("com.hospitality.fooddoor", PackageManager.GET_SIGNATURES);
+//            for(Signature signature:info.signatures)
+//            {
+//                MessageDigest messageDigest = MessageDigest.getInstance("SHA");
+//                messageDigest.update(signature.toByteArray());
+//                Log.e("KEYHASH", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT));
+//            }
+//        } catch (PackageManager.NameNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void Authenticate(){
 
@@ -88,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
                 .setEmailButtonId(R.id.emailLogin)
                 .setGoogleButtonId(R.id.googleLogin)
                 .setFacebookButtonId(R.id.facebookLogin)
-                .setAnonymousButtonId(R.id.loginLater)
                 .build();
 
         startActivityForResult(
@@ -97,8 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                         .setAvailableProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.EmailBuilder().build(),
                                 new AuthUI.IdpConfig.GoogleBuilder().build(),
-                                new AuthUI.IdpConfig.FacebookBuilder().build(),
-                                new AuthUI.IdpConfig.AnonymousBuilder().build()))
+                                new AuthUI.IdpConfig.FacebookBuilder().build()))
                         .setIsSmartLockEnabled(false)
                         .setAuthMethodPickerLayout(methodPickerLayout)
                         .setTheme(R.style.ForLogin)
@@ -114,7 +129,9 @@ public class LoginActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if(resultCode == RESULT_OK){
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                Intent intent2 = new Intent(LoginActivity.this, HomeActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent2);
                 finish();
             }
             else {

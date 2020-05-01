@@ -1,24 +1,22 @@
 package com.hospitality.fooddoor;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,7 +30,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.andremion.counterfab.CounterFab;
 import com.facebook.CallbackManager;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
@@ -42,24 +39,16 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.ybq.android.spinkit.style.WanderingCubes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.hospitality.fooddoor.common.Common;
 import com.hospitality.fooddoor.database.Database;
 import com.hospitality.fooddoor.model.Food;
 import com.hospitality.fooddoor.model.Orders;
-import com.mancj.materialsearchbar.MaterialSearchBar;
-import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.tapadoo.alerter.Alerter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FoodListActivity extends AppCompatActivity {
 

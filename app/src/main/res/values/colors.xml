@@ -3,7 +3,8 @@
     <color name="colorPrimary">#d32f2f</color>
     <color name="colorPrimaryDark">#b71c1c</color>
     <color name="colorAccent">#b71c1c</color>
-    <color name="colorPrimaryForLogin">#212121</color>
+
+    <color name="colorPrimaryForLogin">#000000</color>
     <color name="colorPrimaryDarkForLogin">#000000</color>
     <color name="colorAccentForLogin">#00796B</color>
     <color name="colorControlNormalForLogin">#00796B</color>

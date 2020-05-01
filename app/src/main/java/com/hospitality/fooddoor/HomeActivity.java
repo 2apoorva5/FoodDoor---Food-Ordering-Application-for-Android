@@ -6,19 +6,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,11 +35,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.BaseSliderView;
 import com.glide.slider.library.SliderTypes.TextSliderView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -57,6 +57,7 @@ import com.hospitality.fooddoor.model.HomeRecommended;
 import com.hospitality.fooddoor.model.HomeSlider;
 import com.hospitality.fooddoor.model.HomeToday;
 import com.hospitality.fooddoor.model.Token;
+import com.smarteist.autoimageslider.SliderLayout;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -68,7 +69,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ConstraintLayout culprit, noInternet;
-    private SliderLayout sliderLayout;
     private CircleImageView profilePic, homeProfilePic;
     private TextView username, homeUser, homeGreetings, viewAllToday, viewAllMeals, viewAllRecommended, viewAllFromHouse, viewAllPopular;
     private CardView category1, viewAll1, veg1, nonVeg1, breakfast1, lunch1, dinner1, offer201, offer301, offer401, offer501;
@@ -88,7 +88,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference Banners, Today, Meals, FromHouse, Recommended, Popular;
     String name, email;
 
-    HashMap<String, String> image_list;
     String url1 = "https://firebasestorage.googleapis.com/v0/b/fooddoor-42765.appspot.com/o/HomeImages%2Fcategory.jpg?alt=media&token=07f5b30a-42ec-48f9-8ee7-7c689e833004";
     String url2 = "https://firebasestorage.googleapis.com/v0/b/fooddoor-42765.appspot.com/o/HomeImages%2Fviewall.jpg?alt=media&token=491e66f6-4c99-47a2-87bc-58eded16ab9f";
     String url3 = "https://firebasestorage.googleapis.com/v0/b/fooddoor-42765.appspot.com/o/HomeImages%2Fvegfood.jpg?alt=media&token=fac1830b-517b-4cbc-992d-fb62a21db6b9";
@@ -151,7 +150,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         culprit = findViewById(R.id.culprit);
         noInternet = findViewById(R.id.no_internet);
-        sliderLayout = findViewById(R.id.banner_layout);
 
         homeUser = findViewById(R.id.homeUser);
         homeGreetings = findViewById(R.id.homeGreetings);
@@ -237,7 +235,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     {
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                    sliderLayout.startAutoCycle();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
@@ -278,7 +275,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     {
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                    sliderLayout.startAutoCycle();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
@@ -350,46 +346,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setupSlider() {
-        image_list = new HashMap<>();
-        Banners.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                {
-                    HomeSlider slider = postSnapshot.getValue(HomeSlider.class);
-                    image_list.put(slider.getName(), slider.getImage());
-                }
 
-                for(String key : image_list.keySet())
-                {
-                    RequestOptions requestOptions = new RequestOptions();
-                    requestOptions.centerCrop();
-
-                    TextSliderView textSliderView = new TextSliderView(getBaseContext());
-                    textSliderView
-                            .image(image_list.get(key))
-                            .setRequestOption(requestOptions)
-                            .setProgressBarVisible(true)
-                            .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                                @Override
-                                public void onSliderClick(BaseSliderView baseSliderView) {
-                                    return;
-                                }
-                            });
-
-                    sliderLayout.addSlider(textSliderView);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        sliderLayout.setDuration(4000);
-        sliderLayout.startAutoCycle();
     }
 
     private void todayLoader() {
@@ -739,15 +696,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        sliderLayout.stopAutoCycle();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
-        sliderLayout.startAutoCycle();
         if(todayAdapter != null)
         {
             todayAdapter.startListening();
@@ -768,24 +718,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         {
             popularAdapter.startListening();
         }
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        sliderLayout.startAutoCycle();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        sliderLayout.startAutoCycle();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        sliderLayout.startAutoCycle();
     }
 
     private void updateToken(String token) {
