@@ -6,18 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,42 +18,44 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.glide.slider.library.SliderTypes.BaseSliderView;
-import com.glide.slider.library.SliderTypes.TextSliderView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.hospitality.fooddoor.common.Common;
 import com.hospitality.fooddoor.model.HomeFromHouse;
 import com.hospitality.fooddoor.model.HomeMeals;
 import com.hospitality.fooddoor.model.HomePopular;
 import com.hospitality.fooddoor.model.HomeRecommended;
-import com.hospitality.fooddoor.model.HomeSlider;
 import com.hospitality.fooddoor.model.HomeToday;
 import com.hospitality.fooddoor.model.Token;
-import com.smarteist.autoimageslider.SliderLayout;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ConstraintLayout culprit, noInternet;
@@ -191,7 +181,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         recyclerRecommended = findViewById(R.id.recyclerRecommended);
         recyclerPopular = findViewById(R.id.recyclerPopular);
 
-        if(user == null){
+        if (user == null) {
             username.setText("LOGIN/SIGNUP");
             username.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -201,7 +191,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         } else {
-            for(UserInfo profile : user.getProviderData()){
+            for (UserInfo profile : user.getProviderData()) {
                 String providerId = profile.getProviderId();
 
                 String uid = profile.getUid();
@@ -229,21 +219,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                if(Common.isConnectedToInternet(HomeActivity.this))
-                {
-                    if(swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled())
-                    {
+                if (Common.isConnectedToInternet(HomeActivity.this)) {
+                    if (swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled()) {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
                     }
-                }
-                else
-                {
-                    if(swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled())
-                    {
+                } else {
+                    if (swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled()) {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                     //make translucent statusBar on kitkat devices
@@ -269,10 +254,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(Common.isConnectedToInternet(HomeActivity.this))
-                {
-                    if(swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled())
-                    {
+                if (Common.isConnectedToInternet(HomeActivity.this)) {
+                    if (swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled()) {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -281,11 +264,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     }
                     culprit.setVisibility(View.VISIBLE);
                     noInternet.setVisibility(View.GONE);
-                }
-                else
-                {
-                    if(swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled())
-                    {
+                } else {
+                    if (swipeRefreshLayout.isRefreshing() && swipeRefreshLayout.isNestedScrollingEnabled()) {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                     //make translucent statusBar on kitkat devices
@@ -335,7 +315,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         recyclerPopular.setHasFixedSize(true);
         recyclerPopular.setLayoutManager(layoutManager5);
 
-        updateToken(FirebaseInstanceId.getInstance().getToken());
         setupSlider();
 
         todayLoader();
@@ -387,11 +366,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         culprit.setVisibility(View.VISIBLE);
     }
 
-    public interface TodayItemClickListener{
+    public interface TodayItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    public class TodayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class TodayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         View view;
         TextView todayName, todayDiscount;
@@ -419,7 +398,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void mealsLoader(){
+    private void mealsLoader() {
         List<HomeMeals> homeMeals;
 
         swipeRefreshLayout.setRefreshing(false);
@@ -457,11 +436,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         culprit.setVisibility(View.VISIBLE);
     }
 
-    public interface MealsItemClickListener{
+    public interface MealsItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    public class MealsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MealsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         View view;
         TextView mealsName, mealsDiscount;
@@ -489,7 +468,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void fromHouseLoader(){
+    private void fromHouseLoader() {
         List<HomeFromHouse> homeFromHouses;
 
         swipeRefreshLayout.setRefreshing(false);
@@ -526,11 +505,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         culprit.setVisibility(View.VISIBLE);
     }
 
-    public interface FromHouseItemClickListener{
+    public interface FromHouseItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    public class FromHouseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class FromHouseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         View view;
         TextView fromName;
@@ -557,7 +536,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void recommendLoader(){
+    private void recommendLoader() {
         List<HomeRecommended> homeRecommendeds;
 
         swipeRefreshLayout.setRefreshing(false);
@@ -595,11 +574,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         culprit.setVisibility(View.VISIBLE);
     }
 
-    public interface RecommendItemClickListener{
+    public interface RecommendItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    public class RecommendViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class RecommendViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         View view;
         TextView recoName, recoDiscount;
@@ -627,7 +606,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void popularLoader(){
+    private void popularLoader() {
         List<HomePopular> homePopulars;
 
         swipeRefreshLayout.setRefreshing(false);
@@ -664,11 +643,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         culprit.setVisibility(View.VISIBLE);
     }
 
-    public interface PopularItemClickListener{
+    public interface PopularItemClickListener {
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    public class PopularViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class PopularViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         View view;
         TextView popName;
@@ -698,24 +677,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        if(todayAdapter != null)
-        {
+        if (todayAdapter != null) {
             todayAdapter.startListening();
         }
-        if(mealsAdapter != null)
-        {
+        if (mealsAdapter != null) {
             mealsAdapter.startListening();
         }
-        if(fromAdapter != null)
-        {
+        if (fromAdapter != null) {
             fromAdapter.startListening();
         }
-        if(recommendAdapter != null)
-        {
+        if (recommendAdapter != null) {
             recommendAdapter.startListening();
         }
-        if(popularAdapter != null)
-        {
+        if (popularAdapter != null) {
             popularAdapter.startListening();
         }
     }
@@ -736,7 +710,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(drawerToggle.onOptionsItemSelected(item)){
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -746,71 +720,70 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
-        if(id == R.id.nav_home){
+        if (id == R.id.nav_home) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_menu){
+        if (id == R.id.nav_menu) {
             startActivity(new Intent(HomeActivity.this, MenuActivity.class));
         }
 
-        if(id == R.id.nav_cart){
+        if (id == R.id.nav_cart) {
             startActivity(new Intent(HomeActivity.this, CartActivity.class));
         }
 
-        if(id == R.id.nav_about){
+        if (id == R.id.nav_about) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_orders){
+        if (id == R.id.nav_orders) {
             startActivity(new Intent(HomeActivity.this, OrderStatusActivity.class));
         }
 
-        if(id == R.id.nav_rate){
+        if (id == R.id.nav_rate) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_share){
+        if (id == R.id.nav_share) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_contact){
+        if (id == R.id.nav_contact) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_track){
+        if (id == R.id.nav_track) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_writeUs){
+        if (id == R.id.nav_writeUs) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_profile){
+        if (id == R.id.nav_profile) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_notifications){
+        if (id == R.id.nav_notifications) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_pay){
+        if (id == R.id.nav_pay) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
-        if(id == R.id.nav_logout){
-            if(Common.isConnectedToInternet(HomeActivity.this))
-            {
+        if (id == R.id.nav_logout) {
+            if (Common.isConnectedToInternet(HomeActivity.this)) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
                 builder.setMessage("Are you sure you want to Sign Out?");
                 builder.setCancelable(false);
@@ -838,9 +811,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-            }
-            else
-            {
+            } else {
                 Toast.makeText(HomeActivity.this, "Please check your Connection!", Toast.LENGTH_SHORT).show();
             }
         }
@@ -853,7 +824,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Window window = homeActivity.getWindow();
         WindowManager.LayoutParams layoutParams = window.getAttributes();
 
-        if(on){
+        if (on) {
             layoutParams.flags |= bits;
         } else {
             layoutParams.flags &= ~bits;
